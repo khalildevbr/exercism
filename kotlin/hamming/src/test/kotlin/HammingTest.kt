@@ -13,7 +13,7 @@ class HammingTest {
     fun noDistanceBetweenEmptyStrands() {
         assertEquals(0, Hamming.compute("", ""))
     }
-    
+
     @Test
     fun noDistanceBetweenShortIdenticalStrands() {
         assertEquals(0, Hamming.compute("A", "A"))
