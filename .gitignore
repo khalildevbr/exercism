@@ -6,6 +6,8 @@
 .idea/**/dictionaries
 .idea/**/shelf
 
+/**/build/
+
 .gradle
 .DS_STORE
 
