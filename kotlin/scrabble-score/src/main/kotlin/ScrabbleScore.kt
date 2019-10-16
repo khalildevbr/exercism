@@ -2,7 +2,7 @@ class ScrabbleScore {
     companion object {
         fun scoreWord(input: String): Int {
             require(input.isNotBlank() && input.isNotEmpty()) { return 0 }
-            return input.map { char -> getValue(char.toUpperCase()) }.reduce { total, charValue -> total + charValue }
+            return input.toUpperCase().sumBy { getValue(it) }
         }
 
         private fun getValue(char: Char): Int {
