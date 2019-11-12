@@ -17,10 +17,8 @@ class Hamming {
 
     int getHammingDistance() {
         int hamming = 0;
-        for (int i = 0; i < leftStrand.split("").length; i++) {
-            if (!leftStrand.split("")[i]
-                    .equalsIgnoreCase(
-                            rightStrand.split("")[i])) {
+        for (int i = 0; i < leftStrand.length(); i++) {
+            if (leftStrand.codePointAt(i) != rightStrand.codePointAt(i)) {
                 hamming++;
             }
         }
