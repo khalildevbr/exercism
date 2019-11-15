@@ -7,13 +7,14 @@ class HandshakeCalculator {
         }
 
         private fun getSignal(char: Char, index: Int): Signal? {
-            return when (index) {
-                0 -> if (char == '1') Signal.WINK else null
-                1 -> if (char == '1') Signal.DOUBLE_BLINK else null
-                2 -> if (char == '1') Signal.CLOSE_YOUR_EYES else null
-                3 -> if (char == '1') Signal.JUMP else null
+            return when (char) {
+                '1' -> Signal.values().find { it.value == index }
                 else -> null
             }
         }
+    }
+
+    enum class Signal(val value: Int) {
+        WINK(0), DOUBLE_BLINK(1), CLOSE_YOUR_EYES(2), JUMP(3)
     }
 }

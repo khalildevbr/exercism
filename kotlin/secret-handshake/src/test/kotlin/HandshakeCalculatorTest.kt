@@ -1,4 +1,5 @@
 
+import HandshakeCalculator.Signal.*
 import org.junit.Test
 import kotlin.test.assertEquals
 
@@ -7,7 +8,7 @@ class HandshakeCalculatorTest {
     @Test
     fun testThatInput1YieldsAWink() {
         assertEquals(
-            listOf(Signal.WINK),
+            listOf(WINK),
             HandshakeCalculator.calculateHandshake(1))
     }
 
@@ -15,7 +16,7 @@ class HandshakeCalculatorTest {
     @Test
     fun testThatInput2YieldsADoubleBlink() {
         assertEquals(
-            listOf(Signal.DOUBLE_BLINK),
+            listOf(DOUBLE_BLINK),
             HandshakeCalculator.calculateHandshake(2))
     }
 
@@ -23,7 +24,7 @@ class HandshakeCalculatorTest {
     @Test
     fun testThatInput4YieldsACloseYourEyes() {
         assertEquals(
-            listOf(Signal.CLOSE_YOUR_EYES),
+            listOf(CLOSE_YOUR_EYES),
             HandshakeCalculator.calculateHandshake(4))
     }
 
@@ -31,7 +32,7 @@ class HandshakeCalculatorTest {
     @Test
     fun testThatInput8YieldsAJump() {
         assertEquals(
-            listOf(Signal.JUMP),
+            listOf(JUMP),
             HandshakeCalculator.calculateHandshake(8))
     }
 
@@ -39,7 +40,7 @@ class HandshakeCalculatorTest {
     @Test
     fun testAnInputThatYieldsTwoActions() {
         assertEquals(
-            listOf(Signal.WINK, Signal.DOUBLE_BLINK),
+            listOf(WINK, DOUBLE_BLINK),
             HandshakeCalculator.calculateHandshake(3))
     }
 
@@ -47,7 +48,7 @@ class HandshakeCalculatorTest {
     @Test
     fun testAnInputThatYieldsTwoReversedActions() {
         assertEquals(
-            listOf(Signal.DOUBLE_BLINK, Signal.WINK),
+            listOf(DOUBLE_BLINK, WINK),
             HandshakeCalculator.calculateHandshake(19))
     }
 
@@ -55,7 +56,7 @@ class HandshakeCalculatorTest {
     @Test
     fun testReversingASingleActionYieldsTheSameAction() {
         assertEquals(
-            listOf(Signal.JUMP),
+            listOf(JUMP),
             HandshakeCalculator.calculateHandshake(24))
     }
 
@@ -71,7 +72,7 @@ class HandshakeCalculatorTest {
     @Test
     fun testInputThatYieldsAllActions() {
         assertEquals(
-            listOf(Signal.WINK, Signal.DOUBLE_BLINK, Signal.CLOSE_YOUR_EYES, Signal.JUMP),
+            listOf(WINK, DOUBLE_BLINK, CLOSE_YOUR_EYES, JUMP),
             HandshakeCalculator.calculateHandshake(15))
     }
 
@@ -79,7 +80,7 @@ class HandshakeCalculatorTest {
     @Test
     fun testInputThatYieldsAllActionsReversed() {
         assertEquals(
-            listOf(Signal.JUMP, Signal.CLOSE_YOUR_EYES, Signal.DOUBLE_BLINK, Signal.WINK),
+            listOf(JUMP, CLOSE_YOUR_EYES, DOUBLE_BLINK, WINK),
             HandshakeCalculator.calculateHandshake(31))
     }
 
