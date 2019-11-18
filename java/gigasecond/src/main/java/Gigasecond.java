@@ -9,8 +9,8 @@ class Gigasecond {
     }
 
     Gigasecond(LocalDateTime moment) {
-        long PLUS_SECONDS = (long) Math.pow(10, 9);
-        dateTime = moment.plusSeconds(PLUS_SECONDS);
+        long GIGASECOND = (long) Math.pow(10, 9);
+        dateTime = moment.plusSeconds(GIGASECOND);
     }
 
     LocalDateTime getDateTime() {
