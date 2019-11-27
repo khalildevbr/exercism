@@ -1,12 +1,13 @@
-import java.util.stream.IntStream;
+import java.util.HashMap;
 
 class Scrabble {
     private int score;
+    private HashMap<String, Integer> scrabble = initScrabble();
 
     Scrabble(String word) {
-        score = IntStream
-                .range(0, word.length())
-                .map(position -> getValue(word.toLowerCase().charAt(position)))
+        score = word.chars()
+                .map(Character::toLowerCase)
+                .map(letter -> getValue((char) letter))
                 .sum();
     }
 
@@ -14,43 +15,28 @@ class Scrabble {
         return score;
     }
 
-    private int getValue(char letter) {
-        switch (letter) {
-            case 'a':
-            case 'e':
-            case 'i':
-            case 'o':
-            case 'u':
-            case 'l':
-            case 'n':
-            case 'r':
-            case 's':
-            case 't':
-                return 1;
-            case 'd':
-            case 'g':
-                return 2;
-            case 'b':
-            case 'c':
-            case 'm':
-            case 'p':
-                return 3;
-            case 'f':
-            case 'h':
-            case 'v':
-            case 'w':
-            case 'y':
-                return 4;
-            case 'k':
-                return 5;
-            case 'j':
-            case 'x':
-                return 8;
-            case 'q':
-            case 'z':
-                return 10;
-            default:
-                return 0;
-        }
+    private HashMap<String, Integer> initScrabble() {
+        return new HashMap<String, Integer>() {
+            {
+                put("aeioulnrst", 1);
+                put("dg", 2);
+                put("bcmp", 3);
+                put("fhvwy", 4);
+                put("k", 5);
+                put("jx", 8);
+                put("qz", 10);
+            }
+        };
+    }
+
+    private int getValue(Character letter) {
+        final String[] foundKey = {letter.toString()};
+        scrabble.forEach((key, value) -> {
+            if (key.contains(letter.toString())) {
+                foundKey[0] = key;
+            }
+        });
+
+        return  scrabble.get(foundKey[0]);
     }
 }
