@@ -1,16 +1,15 @@
-import java.util.stream.IntStream;
-
 class DifferenceOfSquaresCalculator {
 
     int computeSquareOfSumTo(int input) {
-        return square(IntStream.range(1, ++input).sum());
+        return square((input * (input + 1)) / 2);
     }
 
     int computeSumOfSquaresTo(int input) {
-        return IntStream
-                .range(1, ++input)
-                .map(this::square)
-                .sum();
+        if (input == 1) {
+            return 1;
+        } else {
+            return input * input + computeSumOfSquaresTo(input - 1);
+        }
     }
 
     int computeDifferenceOfSquares(int input) {
