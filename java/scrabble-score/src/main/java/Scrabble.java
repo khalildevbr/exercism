@@ -1,13 +1,15 @@
 import java.util.HashMap;
+import java.util.Map;
 
 class Scrabble {
     private int score;
-    private HashMap<String, Integer> scrabble = initScrabble();
+    private Map<Character, Integer> scrabble;
 
     Scrabble(String word) {
+        initScrabble();
         score = word.chars()
                 .map(Character::toLowerCase)
-                .map(letter -> getValue((char) letter))
+                .map(letter -> scrabble.get((char) letter))
                 .sum();
     }
 
@@ -15,28 +17,18 @@ class Scrabble {
         return score;
     }
 
-    private HashMap<String, Integer> initScrabble() {
-        return new HashMap<String, Integer>() {
-            {
-                put("aeioulnrst", 1);
-                put("dg", 2);
-                put("bcmp", 3);
-                put("fhvwy", 4);
-                put("k", 5);
-                put("jx", 8);
-                put("qz", 10);
-            }
-        };
+    private void initScrabble() {
+        scrabble = new HashMap<>();
+        putOnScrabble("aeioulnrst", 1);
+        putOnScrabble("dg", 2);
+        putOnScrabble("bcmp", 3);
+        putOnScrabble("fhvwy", 4);
+        putOnScrabble("k", 5);
+        putOnScrabble("jx", 8);
+        putOnScrabble("qz", 10);
     }
 
-    private int getValue(Character letter) {
-        final String[] foundKey = {letter.toString()};
-        scrabble.forEach((key, value) -> {
-            if (key.contains(letter.toString())) {
-                foundKey[0] = key;
-            }
-        });
-
-        return  scrabble.get(foundKey[0]);
+    private void putOnScrabble(String keyArray, int value) {
+        keyArray.chars().forEach(letter -> scrabble.put((char) letter, value));
     }
 }
